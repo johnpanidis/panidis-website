@@ -327,7 +327,6 @@
    Αλλαγές έναντι του αρχικού: οι H4 έγιναν H2/H3 (κλάση .pnd-h4 για ίδια
    εμφάνιση) και τα inline style έγιναν κλάσεις (.pnd-why-title κ.λπ.).
    ===================================================================== */
-500;600;700;800&display=swap');
 .pnd{--navy:#13233E;--navy-2:#1B3358;--blue:#1D70B8;--cyan:#2BA4DE;--cyan-2:#5BBEE8;--ink:#13233E;--text:#46536B;--muted:#76839B;--line:#E5EBF3;--soft:#F4F7FB;--softer:#EAF1F9;--radius:14px;--shadow:0 18px 48px -24px rgba(19,35,62,.28);font-family:'Manrope',system-ui,sans-serif;color:var(--text);line-height:1.65}
 .pnd *{box-sizing:border-box;margin:0;padding:0}
 .pnd h1,.pnd h2,.pnd h3,.pnd h4{color:var(--ink);line-height:1.18;font-weight:800;letter-spacing:-.02em}
@@ -431,6 +430,9 @@
 .pnd .pnd-why-lead{font-size:16.5px;color:var(--muted)}
 .pnd .pnd-news-more{text-align:center;margin-top:30px}
 .pnd .block.pnd-pt0{padding-top:0}
+/* Το Kadence μηδενίζει το margin-bottom του τελευταίου Group (.single-content .wp-block-group:last-child)·
+   στο κουτί CTA το .cta-row είναι τελευταίο, οπότε το περιθώριο ξαναορίζεται με μεγαλύτερη εξειδίκευση. */
+.pnd .wp-block-group.cta-row{margin-bottom:34px}
 
 
 /* =====================================================================
@@ -438,7 +440,6 @@
    Οι ενότητες είναι top-level Groups· τα .pnd-news.pnd-news-* έχουν διπλή
    κλάση ώστε τα περιθώριά τους να υπερισχύουν του Kadence.
    ===================================================================== */
-.page-id-42 .entry-hero{display:none}
 .pnd-news{--ink:#102a43;--navy:#0b2742;--blue:#153f63;--gold:#b38a4a;--mist:#eef4f7;--line:#dbe5ea;--muted:#5f7180;font-family:inherit;color:var(--ink)}
 .pnd-news *{box-sizing:border-box}
 .pnd-news.pnd-news-hero{position:relative;overflow:hidden;margin:0 0 72px;padding:88px 7vw 82px;border-radius:0 0 32px 32px;background:linear-gradient(125deg,#071d33 0%,#103956 62%,#16526a 100%);color:#fff}
@@ -448,7 +449,7 @@
 .pnd-news-eyebrow:before{content:"";width:36px;height:2px;background:var(--gold)}
 .pnd-news h1{max-width:860px;margin:0;font-size:clamp(38px,5vw,68px);line-height:1.05;letter-spacing:-.035em;color:#fff}
 .pnd-news-lead{max-width:760px;margin:26px 0 0;font-size:clamp(17px,2vw,21px);line-height:1.75;color:#dbe8ef}
-.pnd-news-topics{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.pnd-news .pnd-news-topics{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
 .pnd-news-topics span{padding:9px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.07);font-size:13px;color:#fff}
 .pnd-news.pnd-news-heading{max-width:1180px;margin:0 auto 32px;padding:0 24px}
 .pnd-news-heading .kicker{margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--gold)}
@@ -488,7 +489,6 @@
    Ο τίτλος της κάρτας («Στοιχεία Επικοινωνίας») είναι πλέον το H1 της
    σελίδας και οι ετικέτες (Διεύθυνση, Τηλέφωνα…) H2 με κλάση .pnd-h4.
    ===================================================================== */
-500;600;700;800&display=swap');
 .pnd-ci{--navy:#13233E;--blue:#1D70B8;--cyan:#2BA4DE;--ink:#13233E;--text:#46536B;--muted:#76839B;--line:#E5EBF3;--softer:#EAF1F9;font-family:'Manrope',system-ui,sans-serif;color:var(--text);line-height:1.6}
 .pnd-ci *{box-sizing:border-box;margin:0;padding:0}
 .pnd-ci a{color:inherit;text-decoration:none}
@@ -514,7 +514,6 @@
    6. Καριέρα (80)
    Το «Γίνε μέρος της ομάδας μας» είναι πλέον H1 (κλάση .pnd-h2 για ίδια εμφάνιση).
    ===================================================================== */
-500;600;700;800&display=swap');
 .pnd-k{--navy:#13233E;--blue:#1D70B8;--cyan:#2BA4DE;--cyan-2:#5BBEE8;--ink:#13233E;--text:#46536B;--muted:#76839B;--line:#E5EBF3;--soft:#F4F7FB;--softer:#EAF1F9;font-family:'Manrope',system-ui,sans-serif;color:var(--text);line-height:1.7}
 .pnd-k *{box-sizing:border-box;margin:0;padding:0}
 .pnd-k :is(h2,.pnd-h2){color:var(--ink);line-height:1.18;font-weight:800;letter-spacing:-.02em}
