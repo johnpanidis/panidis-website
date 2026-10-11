@@ -1,10 +1,16 @@
+/* @import πρέπει να προηγούνται όλων των κανόνων */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.31.0/tabler-icons.min.css');
 
 /* =====================================================================
    ΠΑΝΙΔΗΣ — site.css
    Ενιαίο CSS για όλες τις σελίδες σε blocks (Customizer → Additional CSS).
-   ΑΝΤΙΚΑΘΙΣΤΑ πλήρως το προηγούμενο Additional CSS (custom.css της σελίδας 53).
+   ΑΝΤΙΚΑΘΙΣΤΑ πλήρως το Additional CSS: περιέχει και τους global κανόνες
+   header/footer που υπήρχαν ήδη εκεί (ενότητα G).
 
    Περιεχόμενα
+     –  @import (Manrope, Tabler Icons) — πρέπει να είναι στην αρχή
+     G. Global – Header/Footer (top bar, header, μενού, footer)
      0. Γραμματοσειρές & εικονίδια (Manrope, Tabler Icons)
      1. Συμβατότητα με blocks (όλες οι σελίδες)
      2. Οικογένεια «pnd-*» — Λογιστικές (53), Φοροτεχνικές (55), Εταιρεία (44)
@@ -21,9 +27,164 @@
                     .pnd .pnd-news .pnd-ci .pnd-cm .pnd-k
    ===================================================================== */
 
-/* ---------- 0. Γραμματοσειρές & εικονίδια (αρχική, επικοινωνία, καριέρα) ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.31.0/tabler-icons.min.css');
+/* =====================================================================
+   G. Global – Header/Footer
+   Αυτούσιοι οι κανόνες του προϋπάρχοντος Additional CSS (top bar, header,
+   κύριο μενού, κουμπί header, social icons footer, θέση υπομενού).
+   ===================================================================== */
+/* PANIDIS - Header Top Bar */
+.panidis-topbar-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.panidis-topbar-info span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.panidis-topbar-info span:not(:last-child)::after {
+  content: "|";
+  margin-left: 18px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Header general polishing */
+.site-header {
+  border-bottom: 1px solid #E5EBF3;
+}
+
+.site-main-header-wrap {
+  background: #ffffff;
+}
+
+.site-bottom-header-wrap {
+  background: #ffffff;
+  border-top: 1px solid #EAF1F9;
+  border-bottom: 1px solid #E5EBF3;
+}
+
+/* Main navigation */
+.main-navigation .primary-menu-container > ul > li.menu-item > a {
+  font-weight: 600;
+  color: #13233E;
+  font-size: 15px;
+}
+
+.main-navigation .primary-menu-container > ul > li.menu-item > a:hover {
+  color: #1D70B8;
+}
+
+/* Header button */
+.header-button {
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+  .panidis-topbar-info {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .panidis-topbar-info span:not(:last-child)::after {
+    margin-left: 8px;
+  }
+}
+/* PANIDIS - Header alignment */
+.site-main-header-inner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-branding {
+  justify-self: start;
+}
+
+.site-header-item.site-header-focus-item {
+  align-items: center;
+}
+
+.site-header-item .header-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+/* Menu row spacing */
+.site-bottom-header-inner-wrap {
+  justify-content: center;
+}
+
+.main-navigation .primary-menu-container > ul > li.menu-item > a {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+/* PANIDIS - Footer Social Icons */
+
+/* Facebook */
+.site-footer .social-button.facebook,
+.site-footer a[aria-label*="Facebook"] {
+  color: #1877F2 !important;
+  border-color: #1877F2 !important;
+}
+
+/* Instagram gradient */
+.site-footer .social-button.instagram,
+.site-footer a[aria-label*="Instagram"] {
+  color: #ffffff !important;
+  border: none !important;
+  background: radial-gradient(circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285AEB 90%) !important;
+}
+
+/* Make social icons clean */
+.site-footer .social-button,
+.site-footer .footer-social-inner-wrap a {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px !important;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect */
+.site-footer .footer-social-inner-wrap a:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Keep deep service flyouts inside the desktop viewport. */
+#primary-menu .menu-item-83 > .sub-menu,
+#primary-menu .menu-item-98 > .sub-menu {
+  left: auto;
+  right: 100%;
+}
+
+#primary-menu .menu-item-83 > a .dropdown-nav-toggle svg,
+#primary-menu .menu-item-98 > a .dropdown-nav-toggle svg { transform: rotate(180deg); }
+
+
+/* ---------- 0. Γραμματοσειρές & εικονίδια: τα @import βρίσκονται στην αρχή του αρχείου ---------- */
 
 
 /* =====================================================================
