@@ -1,0 +1,384 @@
+
+/* =====================================================================
+   ΠΑΝΙΔΗΣ — site.css
+   Ενιαίο CSS για όλες τις σελίδες σε blocks (Customizer → Additional CSS).
+   ΑΝΤΙΚΑΘΙΣΤΑ πλήρως το προηγούμενο Additional CSS (custom.css της σελίδας 53).
+
+   Περιεχόμενα
+     0. Γραμματοσειρές & εικονίδια (Manrope, Tabler Icons)
+     1. Συμβατότητα με blocks (όλες οι σελίδες)
+     2. Οικογένεια «pnd-*» — Λογιστικές (53), Φοροτεχνικές (55), Εταιρεία (44)
+        και οι 15 σελίδες υπηρεσιών/κλάδων (pnd-sector)
+        2α. Ειδικοί κανόνες ανά πρότυπο
+        2β. Σελίδα 53 (πιλότος): columns / list / button
+     3. Αρχική (40) — .pnd
+     4. Νέα – Ανακοινώσεις (42) — .pnd-news
+     5. Επικοινωνία (78) — .pnd-ci (στοιχεία), .pnd-cm (χάρτης)
+     6. Καριέρα (80) — .pnd-k
+     7. Διαφανείς παράγραφοι inline περιεχομένου (.pnd-inline) — ΤΕΛΕΥΤΑΙΟ
+
+   Wrapper κλάσεις: .pnd-accounting .pnd-sector .pnd-tax .pnd-company
+                    .pnd .pnd-news .pnd-ci .pnd-cm .pnd-k
+   ===================================================================== */
+
+/* ---------- 0. Γραμματοσειρές & εικονίδια (αρχική, επικοινωνία, καριέρα) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.31.0/tabler-icons.min.css');
+
+
+/* =====================================================================
+   1. Συμβατότητα με blocks
+   - Στο Kadence (classic theme) κάθε Group παίρνει εσωτερικό
+     .wp-block-group__inner-container· με display:contents τα παιδιά
+     συμπεριφέρονται ως άμεσα παιδιά (grid/flex/selectors όπως στο αρχικό HTML).
+   - Το Kadence δίνει margin στα .wp-block-group/.wp-block-columns μέσα στο
+     περιεχόμενο· τα μηδενίζουμε (οι κανόνες των προτύπων, που ακολουθούν,
+     ορίζουν τα δικά τους περιθώρια).
+   ===================================================================== */
+:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k) .wp-block-group__inner-container{display:contents}
+:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k) :is(.wp-block-group,.wp-block-columns,.wp-block-column,.wp-block-buttons),
+.wp-block-group:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k){margin-top:0;margin-bottom:0}
+
+
+/* =====================================================================
+   2. Οικογένεια «pnd-*»
+   Κοινοί κανόνες για .pnd-accounting / .pnd-sector / .pnd-tax / .pnd-company
+   (ίδιο σχέδιο, διαφορετικό όνομα wrapper). Η σειρά των κανόνων είναι η
+   σειρά του αρχικού CSS, για να μη μεταβληθεί το cascade.
+   ===================================================================== */
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company){--pnd-navy:#17283e;--pnd-blue:#2d658b;--pnd-accent:#62add1;--pnd-ink:#26374b;--pnd-muted:#526174;color:var(--pnd-ink);background:#fff;font-size:17px;line-height:1.8;text-align:left}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) *{box-sizing:border-box}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-wrap{width:min(1120px,calc(100% - 64px));margin:0 auto}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) p{margin:0 0 20px;text-align:justify;text-align-last:left;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:8 4 4}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) :is(h1,h2,h3){font-family:inherit;letter-spacing:-.025em;line-height:1.2;text-align:left;margin:0 0 22px;color:var(--pnd-navy)}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-eyebrow{font-size:12px;font-weight:700;letter-spacing:.17em;line-height:1.6;text-transform:uppercase;color:var(--pnd-blue);margin:0 0 20px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero{background:linear-gradient(115deg,#142338,#213e59);color:#dce5ee;padding:76px 0 0;overflow:hidden}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero-grid{display:grid;grid-template-columns:1.65fr 1fr;gap:64px;align-items:center;padding-bottom:58px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero .pnd-eyebrow{color:#8dc9e7}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) h1{font-size:clamp(36px,4.4vw,58px);color:#fff;max-width:740px;font-weight:700}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero-lead{font-size:19px;line-height:1.8;max-width:640px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-year-mark{border-left:1px solid #6b8092;padding:22px 0 22px 40px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-year-mark span{display:block;font-size:13px;letter-spacing:.12em;color:#8dc9e7}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-year-mark strong{display:block;font-size:clamp(68px,8vw,104px);font-weight:600;line-height:1.15;color:#fff;letter-spacing:-.06em}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-year-mark p{font-size:16px;margin:16px 0 0;max-width:220px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero-foot{display:flex;gap:24px;flex-wrap:wrap;border-top:1px solid #506277;padding:22px 0;font-size:13px;letter-spacing:.025em;color:#e3eaf0}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero-foot span+span:before{content:'•';margin-right:24px;color:#8dc9e7}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-section{padding:80px 0}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) h2{font-size:clamp(28px,3vw,40px);font-weight:700}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) h3{font-size:22px;font-weight:650}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-intro{display:grid;grid-template-columns:.85fr 1.4fr;gap:80px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-intro-copy{color:var(--pnd-muted)}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-intro-copy strong{color:var(--pnd-navy)}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-history{background:#f4f6f8}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-history-head{max-width:720px;margin-bottom:42px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-history-head p:last-child{color:var(--pnd-muted)}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-timeline{list-style:none!important;padding:0!important;margin:0!important}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-timeline .pnd-li{display:grid;grid-template-columns:116px 1fr;gap:34px;padding:30px 0;border-top:1px solid #d7dfe6;margin:0}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-date{font-size:34px;font-weight:650;color:var(--pnd-blue);letter-spacing:-.04em;line-height:1.3}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-timeline h3{margin:2px 0 13px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-timeline p{max-width:none;color:var(--pnd-muted);margin:0}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-values-head{max-width:700px;margin-bottom:36px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-value{border-top:3px solid var(--pnd-accent);padding-top:24px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-value h3{font-size:21px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-value p{font-size:16px;color:var(--pnd-muted)}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-closing{padding:56px 0;background:#eaf0f5}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-closing-grid{display:flex;align-items:center;justify-content:space-between;gap:36px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-closing h2{font-size:30px;margin-bottom:12px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-closing p{margin:0;max-width:700px;color:var(--pnd-muted)}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-button{display:inline-block;background:var(--pnd-navy);color:#fff!important;padding:15px 26px;text-decoration:none!important;border-radius:4px;font-weight:600;white-space:nowrap}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-button:hover{background:var(--pnd-blue)}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) a:focus-visible{outline:3px solid var(--pnd-accent);outline-offset:5px}
+@media(max-width:780px){
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-wrap{width:calc(100% - 40px)}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero{padding-top:48px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero-grid{grid-template-columns:1fr;gap:24px;padding-bottom:36px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-year-mark{padding:12px 0 12px 24px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-year-mark strong{font-size:64px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-year-mark p{max-width:none;margin-top:8px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero-foot{gap:8px 18px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero-foot span+span:before{display:none}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-section{padding:52px 0}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-intro{grid-template-columns:1fr;gap:14px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-timeline .pnd-li{grid-template-columns:1fr;gap:8px;padding:26px 0}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-date{font-size:29px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-values-grid{grid-template-columns:1fr;gap:22px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-closing-grid{align-items:flex-start;flex-direction:column;gap:24px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-hero-lead{font-size:17px}
+}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-eyebrow,:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-year-mark p{text-align:left;hyphens:none}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) :is(h1,h2,h3){text-wrap:balance}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-value p{text-align:left;hyphens:none;text-wrap:pretty}
+@media(max-width:780px){
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) p{text-align:left;hyphens:none;text-wrap:pretty}
+}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-service{padding:30px;background:#fff;border:1px solid #dce4ec;border-top:3px solid #62add1;border-radius:4px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-service-number{display:block;color:#2d658b;font-size:13px;font-weight:700;letter-spacing:.12em;margin-bottom:16px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-service h3{font-size:23px;margin-bottom:18px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-service p{font-size:16px;color:#526174;margin:0}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-service ul{padding-left:20px;margin:20px 0 0;font-size:15px;color:#526174}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-service li{padding-left:3px;margin:7px 0}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-summary{padding:30px;border:1px solid #607c94;border-radius:4px;background:rgba(255,255,255,.035)}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-summary h2{font-size:24px;color:#fff;margin:0 0 20px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-summary ul{list-style:none;margin:0;padding:0}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-summary li{padding:13px 0;border-top:1px solid #506277;color:#e3eaf0;font-size:16px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-summary li:last-child{padding-bottom:0}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-process{margin-top:44px;padding:30px 0 0;border-top:1px solid #d7dfe6}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-process p{color:#526174;margin-bottom:0}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-related{margin-top:22px!important;font-size:15px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-related a{color:#2d658b;text-underline-offset:4px}
+@media(max-width:780px){
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-service-grid{grid-template-columns:1fr}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-service{padding:24px}
+  :is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-summary{padding:24px}
+}
+:is(.pnd-sector,.pnd-tax) .pnd-service h3{min-height:2.4em}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-update{border-left:3px solid #62add1;padding:0 0 0 24px;margin-top:30px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-update h3{font-size:22px;margin-bottom:12px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-update p{color:#526174}
+.pnd-sector a{color:#2d658b;text-underline-offset:4px}
+:is(.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company) .pnd-meta{font-size:14px;color:#526174}
+@media(max-width:780px){
+  .pnd-sector h1{font-size:36px;overflow-wrap:anywhere}
+  :is(.pnd-sector,.pnd-tax) .pnd-service h3{min-height:0}
+}
+
+/* ---------- 2β. Σελίδα 53 (πιλότος) ----------
+   Η 53 μετατράπηκε πρώτη, με core/columns (hero, εισαγωγή), λίστα για τη
+   γραμμή «Εμπειρία από το 1983 • …», <p> για τους αριθμούς καρτών και
+   core/button για το CTA. */
+.pnd-accounting ul.pnd-hero-foot{list-style:none;margin:0}
+.pnd-accounting ul.pnd-hero-foot li{margin:0;padding:0}
+.pnd-accounting ul.pnd-hero-foot li+li:before{content:'•';margin-right:24px;color:#8dc9e7}
+.pnd-accounting .pnd-summary li{margin:0}
+.pnd-accounting .pnd-service p.pnd-service-number{color:#2d658b;font-size:13px;margin:0 0 16px;text-align:left;hyphens:none}
+.pnd-accounting .wp-block-button.pnd-button,.pnd-accounting .wp-block-button.pnd-button:hover{display:block;background:none;padding:0;border-radius:0}
+.pnd-accounting .pnd-button .wp-block-button__link{display:inline-block;background:var(--pnd-navy);color:#fff!important;padding:15px 26px;text-decoration:none!important;border-radius:4px;font-weight:600;font-size:inherit;line-height:1.8;white-space:nowrap}
+.pnd-accounting .pnd-button .wp-block-button__link:hover{background:var(--pnd-blue)}
+@media(max-width:780px){
+  .pnd-accounting ul.pnd-hero-foot li+li:before{display:none}
+}
+
+
+/* =====================================================================
+   3. Αρχική (40) — wrapper .pnd
+   Αλλαγές έναντι του αρχικού: οι H4 έγιναν H2/H3 (κλάση .pnd-h4 για ίδια
+   εμφάνιση) και τα inline style έγιναν κλάσεις (.pnd-why-title κ.λπ.).
+   ===================================================================== */
+500;600;700;800&display=swap');
+.pnd{--navy:#13233E;--navy-2:#1B3358;--blue:#1D70B8;--cyan:#2BA4DE;--cyan-2:#5BBEE8;--ink:#13233E;--text:#46536B;--muted:#76839B;--line:#E5EBF3;--soft:#F4F7FB;--softer:#EAF1F9;--radius:14px;--shadow:0 18px 48px -24px rgba(19,35,62,.28);font-family:'Manrope',system-ui,sans-serif;color:var(--text);line-height:1.65}
+.pnd *{box-sizing:border-box;margin:0;padding:0}
+.pnd h1,.pnd h2,.pnd h3,.pnd h4{color:var(--ink);line-height:1.18;font-weight:800;letter-spacing:-.02em}
+.pnd a{color:inherit;text-decoration:none}.pnd a:focus-visible{outline:3px solid var(--cyan-2);outline-offset:3px}.pnd #ypiresies{scroll-margin-top:110px}
+.pnd .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.pnd .eyebrow{font-size:clamp(27px,3vw,38px);font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:var(--blue);line-height:1.2}
+.pnd .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;padding:13px 24px;border-radius:999px;transition:.22s;cursor:pointer;border:1.5px solid transparent}
+.pnd .btn-primary{background:var(--cyan);color:#fff}
+.pnd .btn-primary:hover{background:#1f93cd;transform:translateY(-2px)}
+.pnd .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.32)}
+.pnd .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+
+.pnd .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.pnd .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 420px at 88% -10%,rgba(43,164,222,.34),transparent 60%),radial-gradient(700px 500px at 0% 110%,rgba(29,112,184,.30),transparent 55%)}
+.pnd .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:54px 54px}
+.pnd .hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:74px 24px 78px}
+.pnd .hero .eyebrow{color:var(--cyan-2);font-size:clamp(26px,3.4vw,42px);letter-spacing:.03em;line-height:1.15;margin-bottom:8px;font-weight:700}
+.pnd .hero h1{color:#fff;font-size:clamp(34px,4.4vw,54px);margin:16px 0 18px}
+.pnd .hero h1 .hl{color:var(--cyan-2)}
+.pnd .hero p.lead{font-size:18px;color:#c5d2e6;max-width:560px;margin-bottom:30px;text-align:justify}
+.pnd .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.pnd .hero .stats{display:flex;gap:30px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.14);padding-top:24px}
+.pnd .hero .stats .n{font-size:30px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.pnd .hero .stats .n span{color:var(--cyan-2)}
+.pnd .hero .stats .l{font-size:13.5px;color:#9fb2cc;font-weight:600}
+.pnd .hcard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:26px}
+.pnd .hcard .pnd-h4{color:#fff;font-size:17px;margin-bottom:4px}
+.pnd .hcard p{color:#a9b9d2;font-size:14px;margin-bottom:20px}
+.pnd .pick{display:grid;gap:12px}
+.pnd .pick a{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:15px 16px;border-radius:13px;transition:.2s}
+.pnd .pick a:hover{background:rgba(43,164,222,.16);border-color:var(--cyan)}
+.pnd .pick .ic{width:42px;height:42px;flex:none;border-radius:11px;background:rgba(43,164,222,.18);color:var(--cyan-2);display:flex;align-items:center;justify-content:center;font-size:21px}
+.pnd .pick .tx b{display:block;color:#fff;font-size:15.5px;font-weight:700}
+.pnd .pick .tx small{color:#9fb2cc;font-size:12.5px}
+.pnd .pick .ar{margin-left:auto;color:#8aa0bd}
+
+.pnd .block{padding:86px 0}
+.pnd .soft{background:var(--soft)}
+.pnd .head{max-width:680px;margin:0 auto 50px;text-align:center}
+.pnd .head h2{font-size:clamp(27px,3vw,38px);margin:13px 0 14px}
+.pnd .head p{font-size:17px;color:var(--muted)}
+.pnd .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pnd .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;transition:.24s}
+.pnd .card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#cfe0f1}
+.pnd .card .ic{width:56px;height:56px;border-radius:14px;background:var(--softer);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px}
+.pnd .card:hover .ic{background:var(--cyan);color:#fff}
+.pnd .card h3{font-size:19.5px;margin-bottom:9px}
+.pnd .card p{font-size:14.5px;color:var(--muted);margin-bottom:16px}
+.pnd .card .more{font-weight:700;color:var(--blue);font-size:14.5px;display:inline-flex;align-items:center;gap:6px}
+
+.pnd .split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pnd .aud{position:relative;border-radius:18px;padding:42px 38px;overflow:hidden;color:#fff;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end}
+.pnd .aud.b1{background:linear-gradient(150deg,#1B3358,#13233E)}
+.pnd .aud.b2{background:linear-gradient(150deg,#1D70B8,#155a93)}
+.pnd .aud .tag{position:absolute;top:30px;left:38px;width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:25px;color:#fff}
+.pnd .aud h3{color:#fff;font-size:24px;margin-bottom:8px}
+.pnd .aud p{color:rgba(255,255,255,.82);font-size:15px;margin-bottom:18px}
+.pnd .aud .more{color:#fff;font-weight:700;display:inline-flex;gap:7px;align-items:center}
+
+.pnd .chips{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;max-width:920px;margin:0 auto}
+.pnd .chip{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);padding:13px 20px;border-radius:999px;font-weight:600;color:var(--ink);font-size:15px;transition:.2s}
+.pnd .chip:hover{border-color:var(--cyan);color:var(--blue);transform:translateY(-3px)}
+.pnd .chip i{color:var(--cyan);font-size:18px}
+
+.pnd .why{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center}
+.pnd .pills{display:grid;gap:18px}
+.pnd .pill{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px}
+.pnd .pill .ic{width:48px;height:48px;flex:none;border-radius:12px;background:var(--softer);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:22px}
+.pnd .pill .pnd-h4{font-size:17.5px;margin-bottom:4px}
+.pnd .pill p{font-size:14px;color:var(--muted)}
+.pnd .statbar{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
+.pnd .statbar .s{text-align:center;background:var(--navy);border-radius:var(--radius);padding:24px 10px;color:#fff}
+.pnd .statbar .s .n{font-size:30px;font-weight:800;color:var(--cyan-2)}
+.pnd .statbar .s .l{font-size:12.5px;color:#aebfd6;font-weight:600;margin-top:4px}
+
+.pnd .news{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pnd .post{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.24s}
+.pnd .post:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.pnd .post .ph{height:8px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.pnd .post .bd{padding:24px 24px 26px}
+.pnd .post .date{font-size:12.5px;color:var(--cyan);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.pnd .post .pnd-h4{font-size:17px;margin:9px 0 8px}
+.pnd .post p{font-size:14px;color:var(--muted)}
+
+.pnd .ctaband{position:relative;background:var(--navy);color:#fff;border-radius:22px;padding:58px;overflow:hidden;text-align:center}
+.pnd .ctaband::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 300px at 80% 0%,rgba(43,164,222,.34),transparent 60%)}
+.pnd .ctaband > *,.pnd .ctaband > .wp-block-group__inner-container > *{position:relative}
+.pnd .ctaband h2{color:#fff;font-size:clamp(26px,3vw,36px);margin-bottom:12px}
+.pnd .ctaband p{color:#c5d2e6;font-size:17px;margin-bottom:28px}
+.pnd .ctaband .cta-row{justify-content:center}
+
+@media(max-width:980px){
+  .pnd .hero .wrap,.pnd .why,.pnd .split{grid-template-columns:1fr}
+  .pnd .cards,.pnd .news{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .pnd .cards,.pnd .news,.pnd .statbar{grid-template-columns:1fr}
+}
+/* πρώην inline style attributes */
+.pnd .pnd-why-title{font-size:34px;margin:13px 0 16px}
+.pnd .pnd-why-lead{font-size:16.5px;color:var(--muted)}
+.pnd .pnd-news-more{text-align:center;margin-top:30px}
+.pnd .block.pnd-pt0{padding-top:0}
+
+
+/* =====================================================================
+   4. Νέα – Ανακοινώσεις (42)
+   Οι ενότητες είναι top-level Groups· τα .pnd-news.pnd-news-* έχουν διπλή
+   κλάση ώστε τα περιθώριά τους να υπερισχύουν του Kadence.
+   ===================================================================== */
+.page-id-42 .entry-hero{display:none}
+.pnd-news{--ink:#102a43;--navy:#0b2742;--blue:#153f63;--gold:#b38a4a;--mist:#eef4f7;--line:#dbe5ea;--muted:#5f7180;font-family:inherit;color:var(--ink)}
+.pnd-news *{box-sizing:border-box}
+.pnd-news.pnd-news-hero{position:relative;overflow:hidden;margin:0 0 72px;padding:88px 7vw 82px;border-radius:0 0 32px 32px;background:linear-gradient(125deg,#071d33 0%,#103956 62%,#16526a 100%);color:#fff}
+.pnd-news-hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-120px;top:-180px;box-shadow:0 0 0 60px rgba(255,255,255,.025),0 0 0 120px rgba(255,255,255,.02)}
+.pnd-news-inner{position:relative;z-index:1;max-width:1180px;margin:auto}
+.pnd-news-eyebrow{display:inline-flex;align-items:center;gap:10px;margin:0 0 22px;font-size:13px;font-weight:800;letter-spacing:.16em;color:#e3c99d}
+.pnd-news-eyebrow:before{content:"";width:36px;height:2px;background:var(--gold)}
+.pnd-news h1{max-width:860px;margin:0;font-size:clamp(38px,5vw,68px);line-height:1.05;letter-spacing:-.035em;color:#fff}
+.pnd-news-lead{max-width:760px;margin:26px 0 0;font-size:clamp(17px,2vw,21px);line-height:1.75;color:#dbe8ef}
+.pnd-news-topics{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.pnd-news-topics span{padding:9px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.07);font-size:13px;color:#fff}
+.pnd-news.pnd-news-heading{max-width:1180px;margin:0 auto 32px;padding:0 24px}
+.pnd-news-heading .kicker{margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--gold)}
+.pnd-news-heading h2{margin:0;font-size:clamp(30px,4vw,46px);line-height:1.15;color:var(--navy)}
+.pnd-news-heading p{max-width:680px;margin:15px 0 0;color:var(--muted);font-size:17px;line-height:1.7}
+.pnd-news-query{max-width:1180px;margin:0 auto 76px;padding:0 24px}
+.pnd-news-query .wp-block-post-template{gap:28px}
+.pnd-news-card{height:100%;overflow:hidden;padding:0 0 26px!important;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 16px 42px rgba(13,42,65,.08);transition:transform .25s ease,box-shadow .25s ease}
+.pnd-news-card:hover{transform:translateY(-5px);box-shadow:0 22px 50px rgba(13,42,65,.14)}
+.pnd-news-card .wp-block-post-featured-image{margin:0 0 22px}
+.pnd-news-card .wp-block-post-featured-image img{width:100%;height:220px;object-fit:cover;border-radius:0!important}
+.pnd-news-card .wp-block-post-terms,.pnd-news-card .wp-block-post-date,.pnd-news-card .wp-block-post-title,.pnd-news-card .wp-block-post-excerpt{margin-left:24px;margin-right:24px}
+.pnd-news-card .wp-block-post-terms{margin-bottom:8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.pnd-news-card .wp-block-post-terms a{color:var(--gold)}
+.pnd-news-card .wp-block-post-date{margin-bottom:12px;font-size:13px;color:#7a8b98}
+.pnd-news-card .wp-block-post-title{margin-top:0;margin-bottom:12px;font-size:23px;line-height:1.3}
+.pnd-news-card .wp-block-post-title a{color:var(--navy);text-decoration:none}
+.pnd-news-card .wp-block-post-excerpt{color:var(--muted);line-height:1.65}
+.pnd-news-card .wp-block-post-excerpt__more-link{display:inline-flex;margin-top:12px;font-weight:800;color:var(--blue);text-decoration:none}
+.pnd-news-empty{padding:64px 28px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#f7fafc,#edf4f7);text-align:center}
+.pnd-news-empty .mark{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 18px;border-radius:50%;background:var(--navy);color:#fff;font-size:24px}
+.pnd-news-empty h3{margin:0 0 12px;font-size:28px;color:var(--navy)}
+.pnd-news-empty p{max-width:610px;margin:0 auto;color:var(--muted);font-size:16px;line-height:1.7}
+.pnd-news-query .wp-block-query-pagination{margin-top:40px;justify-content:center;gap:10px}
+.pnd-news-query .page-numbers,.pnd-news-query .wp-block-query-pagination a{padding:10px 14px;border:1px solid var(--line);border-radius:9px;color:var(--navy);text-decoration:none}
+.pnd-news.pnd-news-cta{margin:0;padding:68px 24px;background:var(--mist)}
+.pnd-news-cta .box{display:flex;align-items:center;justify-content:space-between;gap:32px;max-width:1180px;margin:auto;padding:40px;border-radius:20px;background:#fff;box-shadow:0 14px 40px rgba(13,42,65,.07)}
+.pnd-news-cta h2{margin:0 0 8px;font-size:30px;color:var(--navy)}
+.pnd-news-cta p{margin:0;color:var(--muted)}
+.pnd-news-button{display:inline-flex;align-items:center;justify-content:center;min-width:210px;padding:14px 22px;border-radius:8px;background:var(--navy);color:#fff!important;font-weight:800;text-decoration:none!important}
+.pnd-news-button:hover{background:var(--blue)}
+@media(max-width:780px){.pnd-news.pnd-news-hero{margin-bottom:54px;padding:66px 24px 62px;border-radius:0 0 24px 24px}.pnd-news h1{font-size:40px}.pnd-news-query .wp-block-post-template{grid-template-columns:1fr!important}.pnd-news-cta .box{align-items:flex-start;flex-direction:column;padding:30px}.pnd-news-button{width:100%}}
+
+
+/* =====================================================================
+   5. Επικοινωνία (78)
+   Ο τίτλος της κάρτας («Στοιχεία Επικοινωνίας») είναι πλέον το H1 της
+   σελίδας και οι ετικέτες (Διεύθυνση, Τηλέφωνα…) H2 με κλάση .pnd-h4.
+   ===================================================================== */
+500;600;700;800&display=swap');
+.pnd-ci{--navy:#13233E;--blue:#1D70B8;--cyan:#2BA4DE;--ink:#13233E;--text:#46536B;--muted:#76839B;--line:#E5EBF3;--softer:#EAF1F9;font-family:'Manrope',system-ui,sans-serif;color:var(--text);line-height:1.6}
+.pnd-ci *{box-sizing:border-box;margin:0;padding:0}
+.pnd-ci a{color:inherit;text-decoration:none}
+.pnd-ci .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px 28px;height:100%}
+.pnd-ci .t{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.01em;margin-bottom:18px}
+.pnd-ci .row{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+.pnd-ci .row:last-child{border-bottom:none}
+.pnd-ci .ic{width:44px;height:44px;flex:none;border-radius:11px;background:var(--softer);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:21px}
+.pnd-ci .pnd-h4{font-size:13px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.pnd-ci .v{font-size:15.5px;color:var(--ink);font-weight:600;line-height:1.5}
+.pnd-ci .v span{display:block}
+.pnd-ci .v a:hover{color:var(--blue)}
+/* ο τίτλος της κάρτας έγινε H1: κληρονομεί γραμματοσειρά/ύψος γραμμής όπως το αρχικό div */
+.pnd-ci h1.t{font-family:inherit;line-height:inherit;margin-top:0}
+/* Χάρτης */
+.pnd-cm{font-family:'Manrope',system-ui,sans-serif}
+.pnd-cm *{box-sizing:border-box;margin:0;padding:0}
+.pnd-cm .map{border:1px solid #E5EBF3;border-radius:14px;overflow:hidden;height:100%;min-height:520px}
+.pnd-cm .map iframe{width:100%;height:100%;min-height:520px;border:0;display:block}
+
+
+/* =====================================================================
+   6. Καριέρα (80)
+   Το «Γίνε μέρος της ομάδας μας» είναι πλέον H1 (κλάση .pnd-h2 για ίδια εμφάνιση).
+   ===================================================================== */
+500;600;700;800&display=swap');
+.pnd-k{--navy:#13233E;--blue:#1D70B8;--cyan:#2BA4DE;--cyan-2:#5BBEE8;--ink:#13233E;--text:#46536B;--muted:#76839B;--line:#E5EBF3;--soft:#F4F7FB;--softer:#EAF1F9;font-family:'Manrope',system-ui,sans-serif;color:var(--text);line-height:1.7}
+.pnd-k *{box-sizing:border-box;margin:0;padding:0}
+.pnd-k :is(h2,.pnd-h2){color:var(--ink);line-height:1.18;font-weight:800;letter-spacing:-.02em}
+.pnd-k .wrap{max-width:900px;margin:0 auto;padding:0 24px}
+.pnd-k .eyebrow{font-size:clamp(24px,3vw,34px);font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:var(--blue);line-height:1.2}
+.pnd-k .head{text-align:center;margin-bottom:40px}
+.pnd-k .head :is(h2,.pnd-h2){font-size:clamp(27px,3vw,38px);margin:10px 0 20px}
+.pnd-k .block{padding:70px 0}
+
+.pnd-k .intro{background:#fff;border:1px solid var(--line);border-radius:14px;padding:42px 38px;max-width:900px;margin:0 auto;box-shadow:0 12px 36px -16px rgba(19,35,62,.16)}
+.pnd-k .intro p{font-size:17px;color:var(--text);margin-bottom:16px;text-align:justify}
+.pnd-k .intro p:last-child{margin-bottom:0}
+
+.pnd-k .values{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0 8px;justify-content:center}
+.pnd-k .val{display:inline-flex;align-items:center;gap:8px;background:var(--softer);border:1px solid var(--line);padding:10px 18px;border-radius:999px;font-weight:600;color:var(--ink);font-size:14.5px}
+.pnd-k .val i{color:var(--cyan);font-size:18px}
+
+.pnd-k .cta-line{text-align:center;margin-top:32px;font-size:16px;font-weight:600;color:var(--blue)}
+
+
+/* =====================================================================
+   7. Διαφανείς παράγραφοι .pnd-inline — ΠΡΕΠΕΙ να μείνει τελευταίο
+   Inline στοιχεία που στο αρχικό HTML ήταν ανάμεσα σε blocks (links,
+   κουμπιά, chips, εικονίδια, span) είναι τυλιγμένα σε <p class="pnd-inline">.
+   Η παράγραφος γίνεται «αόρατη» στη διάταξη και κληρονομεί τα πάντα από
+   τον γονέα, ώστε το αποτέλεσμα να είναι ίδιο με το αρχικό HTML.
+   ===================================================================== */
+:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k) p.pnd-inline.pnd-inline{all:inherit;display:contents}

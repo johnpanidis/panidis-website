@@ -1,0 +1,102 @@
+/* =========================================================
+   ΠΑΝΙΔΗΣ — Custom CSS για σελίδες σε blocks
+   Προορισμός: Customizer → Additional CSS
+   Πηγή: το <style> της σελίδας 53 «Λογιστικές» (Custom HTML),
+   προσαρμοσμένο στη δομή των core blocks.
+   ========================================================= */
+
+/* ---------- 1. Βάση & μεταβλητές ---------- */
+.pnd-accounting{--pnd-navy:#17283e;--pnd-blue:#2d658b;--pnd-accent:#62add1;--pnd-ink:#26374b;--pnd-muted:#526174;color:var(--pnd-ink);background:#fff;font-size:17px;line-height:1.8;text-align:left}
+.pnd-accounting *{box-sizing:border-box}
+
+/* ---------- 2. Συμβατότητα με blocks ----------
+   - Στα classic themes το WordPress προσθέτει .wp-block-group__inner-container
+     μέσα σε κάθε Group· με display:contents τα παιδιά συμπεριφέρονται ως άμεσα
+     παιδιά (απαραίτητο για τα grid/flex).
+   - Μηδενισμός των αυτόματων περιθωρίων των blocks· τα περιθώρια ορίζονται παρακάτω. */
+.pnd-accounting .wp-block-group__inner-container{display:contents}
+.pnd-accounting .wp-block-group,.pnd-accounting .wp-block-columns,.pnd-accounting .wp-block-column,.pnd-accounting .wp-block-buttons{margin-top:0;margin-bottom:0}
+.pnd-accounting .wp-block-columns{margin-bottom:0}
+
+/* ---------- 3. Τυπογραφία ---------- */
+.pnd-accounting .pnd-wrap{width:min(1120px,calc(100% - 64px));margin-left:auto;margin-right:auto}
+.pnd-accounting p{margin:0 0 20px;text-align:justify;text-align-last:left;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:8 4 4}
+.pnd-accounting h1,.pnd-accounting h2,.pnd-accounting h3{font-family:inherit;letter-spacing:-.025em;line-height:1.2;text-align:left;margin:0 0 22px;color:var(--pnd-navy);text-wrap:balance}
+.pnd-accounting h1{font-size:clamp(36px,4.4vw,58px);color:#fff;max-width:740px;font-weight:700}
+.pnd-accounting h2{font-size:clamp(28px,3vw,40px);font-weight:700}
+.pnd-accounting h3{font-size:22px;font-weight:650}
+.pnd-accounting .pnd-eyebrow{font-size:12px;font-weight:700;letter-spacing:.17em;line-height:1.6;text-transform:uppercase;color:var(--pnd-blue);margin:0 0 20px;text-align:left;hyphens:none}
+.pnd-accounting a:focus-visible{outline:3px solid var(--pnd-accent);outline-offset:5px}
+
+/* ---------- 4. Hero ---------- */
+.pnd-accounting .pnd-hero{background:linear-gradient(115deg,#142338,#213e59);color:#dce5ee;padding:76px 0 0;overflow:hidden}
+.pnd-accounting .pnd-hero .pnd-eyebrow{color:#8dc9e7}
+.pnd-accounting .pnd-hero-grid{gap:64px;align-items:center;padding-bottom:58px}
+.pnd-accounting .pnd-hero-lead{font-size:19px;line-height:1.8;max-width:640px}
+/* «Εμπειρία από το 1983 • …» — λίστα σε μία γραμμή με διαχωριστικά */
+.pnd-accounting ul.pnd-hero-foot{display:flex;gap:24px;flex-wrap:wrap;list-style:none;margin:0;padding:22px 0;border-top:1px solid #506277;font-size:13px;letter-spacing:.025em;color:#e3eaf0}
+.pnd-accounting ul.pnd-hero-foot li{margin:0;padding:0}
+.pnd-accounting ul.pnd-hero-foot li+li:before{content:'•';margin-right:24px;color:#8dc9e7}
+
+/* Πλαίσιο σύνοψης (aside) */
+.pnd-accounting .pnd-summary{padding:30px;border:1px solid #607c94;border-radius:4px;background:rgba(255,255,255,.035)}
+.pnd-accounting .pnd-summary h2{font-size:24px;color:#fff;margin:0 0 20px}
+.pnd-accounting .pnd-summary ul{list-style:none;margin:0;padding:0}
+.pnd-accounting .pnd-summary li{padding:13px 0;border-top:1px solid #506277;color:#e3eaf0;font-size:16px;margin:0}
+.pnd-accounting .pnd-summary li:last-child{padding-bottom:0}
+
+/* ---------- 5. Ενότητες ---------- */
+.pnd-accounting .pnd-section{padding:80px 0}
+.pnd-accounting .pnd-history{background:#f4f6f8}
+.pnd-accounting .pnd-intro{gap:80px}
+.pnd-accounting .pnd-intro-copy{color:var(--pnd-muted)}
+.pnd-accounting .pnd-intro-copy strong{color:var(--pnd-navy)}
+.pnd-accounting .pnd-history-head{max-width:720px;margin-bottom:42px}
+.pnd-accounting .pnd-history-head p:last-child{color:var(--pnd-muted)}
+
+/* Κάρτες υπηρεσιών (2 στήλες) */
+.pnd-accounting .pnd-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.pnd-accounting .pnd-service{padding:30px;background:#fff;border:1px solid #dce4ec;border-top:3px solid #62add1;border-radius:4px}
+.pnd-accounting .pnd-service-number{display:block;color:#2d658b;font-size:13px;font-weight:700;letter-spacing:.12em;margin-bottom:16px;text-align:left;hyphens:none}
+.pnd-accounting .pnd-service h3{font-size:23px;margin-bottom:18px}
+.pnd-accounting .pnd-service p{font-size:16px;color:#526174;margin:0}
+.pnd-accounting .pnd-service p.pnd-service-number{color:#2d658b;font-size:13px;margin:0 0 16px}
+.pnd-accounting .pnd-service ul{padding-left:20px;margin:20px 0 0;font-size:15px;color:#526174}
+.pnd-accounting .pnd-service li{padding-left:3px;margin:7px 0}
+
+/* Τρόπος συνεργασίας (3 στήλες) */
+.pnd-accounting .pnd-values-head{max-width:700px;margin-bottom:36px}
+.pnd-accounting .pnd-values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.pnd-accounting .pnd-value{border-top:3px solid var(--pnd-accent);padding-top:24px}
+.pnd-accounting .pnd-value h3{font-size:21px}
+.pnd-accounting .pnd-value p{font-size:16px;color:var(--pnd-muted);text-align:left;hyphens:none;text-wrap:pretty}
+.pnd-accounting .pnd-process{margin-top:44px;padding:30px 0 0;border-top:1px solid #d7dfe6}
+.pnd-accounting .pnd-process p{color:#526174;margin-bottom:0}
+.pnd-accounting .pnd-related{margin-top:22px!important;font-size:15px}
+.pnd-accounting .pnd-related a{color:#2d658b;text-underline-offset:4px}
+
+/* ---------- 6. Κλείσιμο (CTA) ---------- */
+.pnd-accounting .pnd-closing{padding:56px 0;background:#eaf0f5}
+.pnd-accounting .pnd-closing-grid{display:flex;align-items:center;justify-content:space-between;gap:36px}
+.pnd-accounting .pnd-closing h2{font-size:30px;margin-bottom:12px}
+.pnd-accounting .pnd-closing p{margin:0;max-width:700px;color:var(--pnd-muted)}
+.pnd-accounting .pnd-button .wp-block-button__link{display:inline-block;background:var(--pnd-navy);color:#fff!important;padding:15px 26px;text-decoration:none!important;border-radius:4px;font-weight:600;font-size:inherit;line-height:1.8;white-space:nowrap}
+.pnd-accounting .pnd-button .wp-block-button__link:hover{background:var(--pnd-blue)}
+
+/* ---------- 7. Κινητά ---------- */
+@media(max-width:780px){
+.pnd-accounting .pnd-wrap{width:calc(100% - 40px)}
+.pnd-accounting .pnd-hero{padding-top:48px}
+.pnd-accounting .pnd-hero-grid{gap:24px;padding-bottom:36px}
+.pnd-accounting ul.pnd-hero-foot{gap:8px 18px}
+.pnd-accounting ul.pnd-hero-foot li+li:before{display:none}
+.pnd-accounting .pnd-section{padding:52px 0}
+.pnd-accounting .pnd-intro{gap:14px}
+.pnd-accounting .pnd-values-grid{grid-template-columns:1fr;gap:22px}
+.pnd-accounting .pnd-closing-grid{align-items:flex-start;flex-direction:column;gap:24px}
+.pnd-accounting .pnd-hero-lead{font-size:17px}
+.pnd-accounting p{text-align:left;hyphens:none;text-wrap:pretty}
+.pnd-accounting .pnd-service-grid{grid-template-columns:1fr}
+.pnd-accounting .pnd-service{padding:24px}
+.pnd-accounting .pnd-summary{padding:24px}
+}
