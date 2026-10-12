@@ -21,10 +21,11 @@
      4. Νέα – Ανακοινώσεις (42) — .pnd-news
      5. Επικοινωνία (78) — .pnd-ci (στοιχεία), .pnd-cm (χάρτης)
      6. Καριέρα (80) — .pnd-k
+     L. Νομικές σελίδες (Πολιτική Απορρήτου, Cookies, Όροι Χρήσης) — .pnd-legal
      7. Διαφανείς παράγραφοι inline περιεχομένου (.pnd-inline) — ΤΕΛΕΥΤΑΙΟ
 
    Wrapper κλάσεις: .pnd-accounting .pnd-sector .pnd-tax .pnd-company
-                    .pnd .pnd-news .pnd-ci .pnd-cm .pnd-k
+                    .pnd .pnd-news .pnd-ci .pnd-cm .pnd-k .pnd-legal
    ===================================================================== */
 
 /* =====================================================================
@@ -196,9 +197,9 @@
      περιεχόμενο· τα μηδενίζουμε (οι κανόνες των προτύπων, που ακολουθούν,
      ορίζουν τα δικά τους περιθώρια).
    ===================================================================== */
-:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k) .wp-block-group__inner-container{display:contents}
-:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k) :is(.wp-block-group,.wp-block-columns,.wp-block-column,.wp-block-buttons),
-.wp-block-group:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k){margin-top:0;margin-bottom:0}
+:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k,.pnd-legal) .wp-block-group__inner-container{display:contents}
+:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k,.pnd-legal) :is(.wp-block-group,.wp-block-columns,.wp-block-column,.wp-block-buttons),
+.wp-block-group:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k,.pnd-legal){margin-top:0;margin-bottom:0}
 
 
 /* =====================================================================
@@ -535,10 +536,51 @@
 
 
 /* =====================================================================
+   L. Νομικές σελίδες — .pnd-legal
+   Ενιαίο απλό πρότυπο για Πολιτική Προστασίας Προσωπικών Δεδομένων,
+   Πολιτική Cookies και Όρους Χρήσης (χρώματα της οικογένειας «pnd-*»).
+   ===================================================================== */
+.pnd-legal{--pnd-navy:#17283e;--pnd-blue:#2d658b;--pnd-accent:#62add1;--pnd-ink:#26374b;--pnd-muted:#526174;--pnd-line:#dce4ec;color:var(--pnd-ink);background:#fff;font-size:17px;line-height:1.75;text-align:left}
+.pnd-legal *{box-sizing:border-box}
+.pnd-legal .pnd-legal-wrap{width:min(860px,calc(100% - 64px));margin:0 auto}
+/* Κεφαλίδα */
+.pnd-legal .pnd-legal-hero{background:#f4f6f8;border-bottom:1px solid var(--pnd-line);padding:64px 0 44px}
+.pnd-legal .pnd-legal-eyebrow{font-size:12px;font-weight:700;letter-spacing:.17em;line-height:1.6;text-transform:uppercase;color:var(--pnd-blue);margin:0 0 16px}
+.pnd-legal h1{font-family:inherit;font-size:clamp(32px,4vw,46px);font-weight:700;line-height:1.15;letter-spacing:-.025em;color:var(--pnd-navy);margin:0 0 14px;text-wrap:balance}
+.pnd-legal .pnd-legal-updated{font-size:14px;color:var(--pnd-muted);margin:0 0 22px}
+.pnd-legal .pnd-legal-lead{font-size:18px;color:var(--pnd-ink);margin:0}
+/* Κείμενο */
+.pnd-legal .pnd-legal-body{padding:48px 0 80px}
+.pnd-legal h2{font-family:inherit;font-size:clamp(22px,2.4vw,27px);font-weight:700;line-height:1.25;letter-spacing:-.015em;color:var(--pnd-navy);margin:44px 0 14px;padding-top:22px;border-top:1px solid var(--pnd-line)}
+.pnd-legal .pnd-legal-body h2:first-child{margin-top:0;padding-top:0;border-top:0}
+.pnd-legal h3{font-family:inherit;font-size:19px;font-weight:650;line-height:1.3;color:var(--pnd-navy);margin:26px 0 8px}
+.pnd-legal p{margin:0 0 16px}
+.pnd-legal ul,.pnd-legal ol{margin:0 0 18px;padding-left:22px}
+.pnd-legal li{margin:6px 0}
+.pnd-legal a{color:var(--pnd-blue);text-underline-offset:3px}
+.pnd-legal a:focus-visible{outline:3px solid var(--pnd-accent);outline-offset:3px}
+.pnd-legal strong{color:var(--pnd-navy)}
+/* Πίνακες (core/table) */
+.pnd-legal .pnd-legal-table{margin:8px 0 24px;overflow-x:auto}
+.pnd-legal .pnd-legal-table table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55}
+.pnd-legal .pnd-legal-table th,.pnd-legal .pnd-legal-table td{border:1px solid var(--pnd-line);padding:10px 12px;text-align:left;vertical-align:top}
+.pnd-legal .pnd-legal-table thead th{background:var(--pnd-navy);color:#fff;font-weight:600;border-color:var(--pnd-navy)}
+.pnd-legal .pnd-legal-table tbody tr:nth-child(even) td{background:#f7f9fb}
+.pnd-legal .pnd-legal-table td:first-child{font-weight:600;color:var(--pnd-navy)}
+@media(max-width:780px){
+  .pnd-legal .pnd-legal-wrap{width:calc(100% - 40px)}
+  .pnd-legal .pnd-legal-hero{padding:44px 0 32px}
+  .pnd-legal .pnd-legal-body{padding:36px 0 56px}
+  .pnd-legal .pnd-legal-table table{font-size:14px}
+  .pnd-legal .pnd-legal-table-wide table{min-width:640px}
+}
+
+
+/* =====================================================================
    7. Διαφανείς παράγραφοι .pnd-inline — ΠΡΕΠΕΙ να μείνει τελευταίο
    Inline στοιχεία που στο αρχικό HTML ήταν ανάμεσα σε blocks (links,
    κουμπιά, chips, εικονίδια, span) είναι τυλιγμένα σε <p class="pnd-inline">.
    Η παράγραφος γίνεται «αόρατη» στη διάταξη και κληρονομεί τα πάντα από
    τον γονέα, ώστε το αποτέλεσμα να είναι ίδιο με το αρχικό HTML.
    ===================================================================== */
-:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k) p.pnd-inline.pnd-inline{all:inherit;display:contents}
+:is(.pnd,.pnd-accounting,.pnd-sector,.pnd-tax,.pnd-company,.pnd-news,.pnd-ci,.pnd-cm,.pnd-k,.pnd-legal) p.pnd-inline.pnd-inline{all:inherit;display:contents}
