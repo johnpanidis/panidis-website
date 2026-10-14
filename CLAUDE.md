@@ -62,7 +62,7 @@
 | Polylang | 3.8.11 | active (γλώσσα από URL, χωρίς cookie — βλ. mu-plugins) |
 | Rank Math SEO | 1.0.280 | active |
 | Under Construction | 5.83 | active |
-| UpdraftPlus | 1.26.8 | active (backups μόνο στον ίδιο server) |
+| UpdraftPlus | 1.26.8 | active (αυτόματα backups: βάση ημερησίως/14, αρχεία εβδομαδιαίως/4· server + Google Drive — προσωρινή λύση, βλ. PROGRESS) |
 | Wordfence Security | 9.0.2 | active |
 | WP Super Cache | 3.1.4 | active |
 

@@ -3,6 +3,7 @@
 - **2026-10-12:** αρχική καταγραφή (GET στο REST API, δημόσια DNS/RDAP, αρχεία του repo).
 - **2026-10-14:** ενημέρωση με τις αποφάσεις και αλλαγές του John στο site και με τον έλεγχο των πιστοποιήσεων DPF.
 - **2026-10-14 (β):** ΔΟΥ επιβεβαιωμένη· SCC Wordfence αποδεκτές μέσω ToS· φόρμες στα ελληνικά, FluentSMTP σε λειτουργία· σελίδες 237–239 δημοσιευμένες.
+- **2026-10-14 (γ):** διάρκεια αρχείων Wordfence/server, backups (αυτόματα, server + Google Drive, DPF), γενική διατύπωση Wordfence· GDPR checkbox στις φόρμες #3 και #4· Ρυθμίσεις → Απόρρητο → 237· email διαχείρισης info@panidis.eu.
 
 Το frontend είναι πίσω από το maintenance mode, οπότε τα cookies των σελίδων **δεν επαληθεύτηκαν σε πραγματική επίσκεψη** (βλ. «Μη επιβεβαιωμένα»).
 
@@ -19,7 +20,7 @@
 | Διατήρηση αιτημάτων Επικοινωνίας | 12 μήνες (εκτός αν ξεκινήσει συνεργασία) | Απόφαση |
 | Διατήρηση αιτήσεων Καριέρας | 12 μήνες | Απόφαση |
 | Hosting και email | IPHOST, Ελλάδα | Επιβεβαιωμένο από John· συμφωνεί με reverse DNS `eport.gr`, RIPE `IPHOST-SHARED` |
-| Backups (UpdraftPlus) | Μόνο στον ίδιο server, χωρίς απομακρυσμένη αποθήκευση | Απόφαση |
+| Backups (UpdraftPlus) | Αυτόματα: βάση ημερησίως (διατηρούνται 14), αρχεία εβδομαδιαίως (διατηρούνται 4)· στον server και αντίγραφο στο Google Drive (προσωρινά σε λογαριασμό Gmail αποκλειστικής εταιρικής χρήσης — μεταφορά σε λύση με σύμβαση επεξεργασίας, άρθρο 28, πριν το launch)· αναφορές backup στο info@panidis.eu | Ρύθμιση John (2026-10-14) |
 | Google reCAPTCHA | Αφαιρέθηκε από τις φόρμες #3 και #4 | **GET:** καμία φόρμα δεν έχει πεδίο recaptcha |
 | Anti-spam | Honeypot του Fluent Forms (χωρίς cookies, χωρίς τρίτους) | Ρύθμιση John (global setting — μη αναγνώσιμο μέσω REST, 403) |
 | Καταγραφή IP (Fluent Forms) | Disable IP Logging ενεργό | Ρύθμιση John (μη αναγνώσιμο μέσω REST) |
@@ -32,8 +33,8 @@
 
 | Φόρμα | Σελίδα | Πεδία | Αποθήκευση | Ειδοποίηση | Προστασία |
 |---|---|---|---|---|---|
-| #3 «Στοιχεία Επικοινωνίας» | 78 Επικοινωνία | Ονοματεπώνυμο/Επωνυμία*, Email*, Τηλέφωνο* (πεδίο αριθμού), Μήνυμα*, GDPR checkbox* («Έχω διαβάσει και συμφωνώ με τους Όρους Χρήσης.») | Βάση WordPress, χωρίς IP | Email προς info@panidis.eu | Honeypot |
-| #4 «Καριέρα» | 80 Καριέρα | Ονοματεπώνυμο*, Email*, Τηλέφωνο* (αριθμός), Σύντομη παρουσίαση/Μήνυμα* — **χωρίς GDPR checkbox**, χωρίς επισύναψη | Βάση WordPress, χωρίς IP | Email προς info@panidis.eu (reply-to ο αιτών) | Honeypot |
+| #3 «Στοιχεία Επικοινωνίας» | 78 Επικοινωνία | Ονοματεπώνυμο/Επωνυμία*, Email*, Τηλέφωνο* (πεδίο αριθμού), Μήνυμα*, GDPR checkbox* με σύνδεσμο προς /politiki-aporritou/ («Έχω διαβάσει… και ενημερώθηκα») | Βάση WordPress, χωρίς IP | Email προς info@panidis.eu | Honeypot |
+| #4 «Καριέρα» | 80 Καριέρα | Ονοματεπώνυμο*, Email*, Τηλέφωνο* (αριθμός), Σύντομη παρουσίαση/Μήνυμα*, GDPR checkbox* με σύνδεσμο προς /politiki-aporritou/ — χωρίς επισύναψη | Βάση WordPress, χωρίς IP | Email προς info@panidis.eu (reply-to ο αιτών) | Honeypot |
 | #1, #2 (demo) | — (μη ενσωματωμένες) | — | — | — | Για διαγραφή |
 
 \* υποχρεωτικό.
@@ -42,13 +43,13 @@
 
 | Υπηρεσία | Δεδομένα | Πού | Διαβίβαση εκτός ΕΟΧ |
 |---|---|---|---|
-| Hosting (ιστότοπος, βάση, backups, email) | Όλα τα δεδομένα του site, αρχεία καταγραφής, email | IPHOST, Ελλάδα — 93.174.123.217 (dev, live και mail στον ίδιο server· MX = panidis.eu, SPF ip4:93.174.123.217) | Όχι |
+| Hosting (ιστότοπος, βάση, backups, email) — αρχεία καταγραφής server σύμφωνα με την πολιτική διατήρησης της IPHOST | Όλα τα δεδομένα του site, αρχεία καταγραφής, email | IPHOST, Ελλάδα — 93.174.123.217 (dev, live και mail στον ίδιο server· MX = panidis.eu, SPF ip4:93.174.123.217) | Όχι |
 | Fluent Forms + FluentSMTP | Πεδία φορμών (χωρίς IP) | Βάση WordPress, email μέσω info@panidis.eu (IPHOST) | Όχι |
-| Wordfence | IP, αιτήματα, αποτυχημένες συνδέσεις | Βάση WordPress· ορισμένες λειτουργίες (π.χ. γεωεντοπισμός IP) επικοινωνούν με Defiant Inc. | ΗΠΑ — **SCC** (η Defiant δεν είναι στο DPF)· οι SCC ισχύουν για όλες τις συμφωνίες μέσω των Terms of Service της Wordfence από 27/09/2021 (https://www.wordfence.com/standard-contractual-clauses/) — δεν υπάρχει πλέον ξεχωριστό DPA για υπογραφή · **[ΠΡΟΣ ΕΠΙΒΕΒΑΙΩΣΗ: ενεργές λειτουργίες που στέλνουν IP]** |
+| Wordfence | IP, αιτήματα, αποτυχημένες συνδέσεις — εντοπισμός απειλών, αποτροπή επιθέσεων, γεωγραφική προέλευση κακόβουλης κίνησης | Βάση WordPress (Live Traffic έως 30 ημέρες)· δεδομένα επιθέσεων προς Defiant Inc. για ενημέρωση κανόνων ασφαλείας | ΗΠΑ — **SCC** (η Defiant δεν είναι στο DPF)· ισχύουν μέσω των Terms of Service της Wordfence από 27/09/2021 (https://www.wordfence.com/standard-contractual-clauses/) |
 | Χάρτης Google (iframe, σελίδα 78) | IP, cookies Google | Google | ΗΠΑ — Google LLC στο **DPF** |
 | Google Fonts (Manrope) | IP, browser | Google | ΗΠΑ — Google LLC στο **DPF** → τοπική φόρτωση (Φάση 3) |
 | cdnjs (Tabler Icons) | IP, browser | Cloudflare | ΗΠΑ — Cloudflare, Inc. στο **DPF** → τοπική φόρτωση (Φάση 3) |
-| UpdraftPlus | Αντίγραφα βάσης/αρχείων | Ίδιος server (IPHOST) | Όχι · **[ΠΡΟΣ ΕΠΙΒΕΒΑΙΩΣΗ: πλήθος/διάρκεια αντιγράφων]** |
+| UpdraftPlus | Αντίγραφα βάσης (άρα και υποβολών φορμών) και αρχείων | Server IPHOST + Google Drive | ΗΠΑ — Google LLC στο **DPF** (άρθρο 45)· διαγραμμένα δεδομένα παραμένουν στα backups έως την κυκλική αντικατάσταση (έως 14 ημέρες για τη βάση) |
 | Σχόλια WordPress | Όνομα, email, IP | Βάση WordPress | Όχι · σχόλια ανοιχτά ως προεπιλογή (audit A5) |
 
 Δεν βρέθηκαν plugins στατιστικής ή διαφήμισης.
