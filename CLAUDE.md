@@ -56,8 +56,8 @@
 | AddToAny Share Buttons | 1.8.18 | inactive (απενεργοποιήθηκε 2026-10-14, GDPR) |
 | Akismet Anti-spam | 5.7.2 | inactive |
 | Blog2Social | 9.1.5 | active |
-| Fluent Forms | 6.2.15 | active (Honeypot ενεργό, Disable IP Logging ενεργό, χωρίς reCAPTCHA) |
-| FluentSMTP | 2.4.1 | inactive (εγκαταστάθηκε, προς ρύθμιση) |
+| Fluent Forms | 6.2.15 | active (Honeypot ενεργό, Disable IP Logging ενεργό, χωρίς reCAPTCHA, μηνύματα στα ελληνικά) |
+| FluentSMTP | 2.4.1 | active (αποστολή φορμών μέσω info@panidis.eu, δοκιμή ΟΚ 2026-10-14) |
 | Kadence Blocks | 3.8.0 | active |
 | Polylang | 3.8.11 | active (γλώσσα από URL, χωρίς cookie — βλ. mu-plugins) |
 | Rank Math SEO | 1.0.280 | active |
