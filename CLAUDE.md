@@ -36,23 +36,33 @@
 - Το `.htaccess` του dev έχει επίσης block «Pass Authorization header» (`CGIPassAuth` / `SetEnvIf`) που **αποδείχθηκε μη απαραίτητο** — το header έφτανε ήδη στο PHP.
 - Αν το mu-plugin αφαιρεθεί ή χαθεί σε μεταφορά/ενημέρωση, η πιστοποίηση θα σταματήσει να λειτουργεί.
 
+## mu-plugins (wp-content/mu-plugins/ — αντίγραφα στο repo)
+
+Τα αρχεία ανεβαίνουν από τον John μέσω cPanel File Manager. Τα αντίγραφα στο repo πρέπει να μένουν ίδια με τον server.
+
+| Αρχείο | Σκοπός |
+|---|---|
+| `rest-app-password-fix.php` | Αναγνωρίζει τα αιτήματα `/wp-json/` και `?rest_route=` ως API requests, ώστε να ελέγχονται τα Application Passwords (βλ. παρακάτω). **Απαραίτητο για την πρόσβαση μέσω REST.** |
+| `polylang-no-cookie.php` | Ορίζει `PLL_COOKIE = false`: η γλώσσα καθορίζεται από το URL, οπότε το Polylang δεν ορίζει το cookie `pll_language` (GDPR — λιγότερα cookies, χωρίς ανάγκη συναίνεσης). |
+
 ## Τεχνικά στοιχεία
 
 - **Server:** nginx μπροστά από Apache, PHP 8.2 (fpm-fcgi).
 - **Theme:** Kadence 1.5.0 (χωρίς child theme).
-- **Plugins** (κατάσταση 2026-10-11):
+- **Plugins** (κατάσταση 2026-10-14):
 
 | Plugin | Έκδοση | Κατάσταση |
 |---|---|---|
-| AddToAny Share Buttons | 1.8.18 | active |
+| AddToAny Share Buttons | 1.8.18 | inactive (απενεργοποιήθηκε 2026-10-14, GDPR) |
 | Akismet Anti-spam | 5.7.2 | inactive |
-| Blog2Social | 9.1.4 | active |
-| Fluent Forms | 6.2.15 | active |
-| Kadence Blocks | 3.7.12.1 | active |
-| Polylang | 3.8.10 | active |
+| Blog2Social | 9.1.5 | active |
+| Fluent Forms | 6.2.15 | active (Honeypot ενεργό, Disable IP Logging ενεργό, χωρίς reCAPTCHA) |
+| FluentSMTP | 2.4.1 | inactive (εγκαταστάθηκε, προς ρύθμιση) |
+| Kadence Blocks | 3.8.0 | active |
+| Polylang | 3.8.11 | active (γλώσσα από URL, χωρίς cookie — βλ. mu-plugins) |
 | Rank Math SEO | 1.0.280 | active |
 | Under Construction | 5.83 | active |
-| UpdraftPlus | 1.26.8 | active |
+| UpdraftPlus | 1.26.8 | active (backups μόνο στον ίδιο server) |
 | Wordfence Security | 9.0.2 | active |
 | WP Super Cache | 3.1.4 | active |
 
