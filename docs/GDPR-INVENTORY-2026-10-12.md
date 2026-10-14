@@ -4,6 +4,7 @@
 - **2026-10-14:** ενημέρωση με τις αποφάσεις και αλλαγές του John στο site και με τον έλεγχο των πιστοποιήσεων DPF.
 - **2026-10-14 (β):** ΔΟΥ επιβεβαιωμένη· SCC Wordfence αποδεκτές μέσω ToS· φόρμες στα ελληνικά, FluentSMTP σε λειτουργία· σελίδες 237–239 δημοσιευμένες.
 - **2026-10-14 (γ):** διάρκεια αρχείων Wordfence/server, backups (αυτόματα, server + Google Drive, DPF), γενική διατύπωση Wordfence· GDPR checkbox στις φόρμες #3 και #4· Ρυθμίσεις → Απόρρητο → 237· email διαχείρισης info@panidis.eu.
+- **2026-10-14 (δ):** banner συναίνεσης Complianz (Φάση 2)· σχόλια WordPress απενεργοποιημένα· cookies Complianz στην Πολιτική Cookies, `comment_author_*` αφαιρέθηκε.
 
 Το frontend είναι πίσω από το maintenance mode, οπότε τα cookies των σελίδων **δεν επαληθεύτηκαν σε πραγματική επίσκεψη** (βλ. «Μη επιβεβαιωμένα»).
 
@@ -27,6 +28,9 @@
 | AddToAny | Απενεργοποιήθηκε | **GET:** inactive |
 | Φόρμες #3 και #4 | Μηνύματα επιβεβαίωσης και θέματα email στα ελληνικά | Ρύθμιση John |
 | Αποστολή email | FluentSMTP ενεργό· η δοκιμαστική υποβολή έφτασε στο info@panidis.eu | Δοκιμή John |
+| Banner συναίνεσης | Complianz 7.5.6 (δωρεάν), περιοχή μόνο ΕΕ, opt-in· κατηγορίες «Απαραίτητα» και «Υπηρεσίες τρίτων» (μετονομασία της marketing)· χωρίς στατιστικά· «Αποδοχή όλων» / «Απόρριψη» / «Ρυθμίσεις» με ίσο βάρος, χωρίς κουμπί κλεισίματος, χωρίς cookie wall· DNT/GPC σεβαστά· ανάκληση από καρτέλα «Ρυθμίσεις cookies» (+ link στο footer, σε εξέλιξη)· ΟΧΙ website scan, cookiedatabase.org sync, records of consent, data request forms | Ρύθμιση John· έκδοση από GET (`/wp/v2/plugins`) |
+| Χάρτης Google | Μπλοκάρεται με placeholder μέχρι συναίνεση στις «Υπηρεσίες τρίτων» | Δοκιμή John (απόρριψη → μπλοκ, αποδοχή → φορτώνει) |
+| Σχόλια WordPress | Απενεργοποιήθηκαν | Ρύθμιση John |
 | Polylang | Γλώσσα από URL (κατάλογος), χωρίς ανίχνευση browser, cookie `pll_language` απενεργοποιημένο με mu-plugin `polylang-no-cookie.php` (`PLL_COOKIE=false`) | Αντίγραφο mu-plugin στο repo |
 
 ## Φόρμες (Fluent Forms)
@@ -50,7 +54,8 @@
 | Google Fonts (Manrope) | IP, browser | Google | ΗΠΑ — Google LLC στο **DPF** → τοπική φόρτωση (Φάση 3) |
 | cdnjs (Tabler Icons) | IP, browser | Cloudflare | ΗΠΑ — Cloudflare, Inc. στο **DPF** → τοπική φόρτωση (Φάση 3) |
 | UpdraftPlus | Αντίγραφα βάσης (άρα και υποβολών φορμών) και αρχείων | Server IPHOST + Google Drive | ΗΠΑ — Google LLC στο **DPF** (άρθρο 45)· διαγραμμένα δεδομένα παραμένουν στα backups έως την κυκλική αντικατάσταση (έως 14 ημέρες για τη βάση) |
-| Σχόλια WordPress | Όνομα, email, IP | Βάση WordPress | Όχι · σχόλια ανοιχτά ως προεπιλογή (audit A5) |
+| Complianz | Επιλογές συναίνεσης | Μόνο cookies στη συσκευή του επισκέπτη (χωρίς records of consent στον server) | Όχι |
+| Σχόλια WordPress | — | Απενεργοποιημένα (2026-10-14) | — |
 
 Δεν βρέθηκαν plugins στατιστικής ή διαφήμισης.
 
@@ -75,10 +80,16 @@
 | wp-settings-*, wp-settings-time-* | WordPress | Ρυθμίσεις διαχείρισης | 1 έτος | Απαραίτητο | Μόνο διαχειριστές |
 | wfwaf-authcookie-* | Wordfence | Αναγνώριση διαχειριστή από WAF | 12 ώρες | Απαραίτητο | **Παρατηρήθηκε** (Set-Cookie, Max-Age=43200) |
 | wf_loginalerted_* | Wordfence | Ειδοποιήσεις σύνδεσης (όταν είναι ενεργές) | έως 1 έτος | Απαραίτητο | Μόνο διαχειριστές |
-| comment_author_* | WordPress | Στοιχεία σχολιαστή (με επιλογή) | 1 έτος | Λειτουργικότητας | Μόνο αν υποβληθεί σχόλιο |
-| NID, AEC, SOCS, __Secure-* | Google | Χάρτης | έως 13 μήνες | Τρίτων (συναίνεση) | Ενδεικτικά — ορίζονται από τη Google |
+| cmplz_banner-status | Complianz | Απάντηση στο banner | 365 ημ. | Απαραίτητο | Κώδικας 7.5.6 (`cmplz_set_cookie`, πρόθεμα `cmplz_`, `cookie_expiry` προεπιλογή 365) |
+| cmplz_functional, cmplz_preferences, cmplz_statistics, cmplz_marketing | Complianz | Επιλογή ανά κατηγορία (marketing = «Υπηρεσίες τρίτων») | 365 ημ. | Απαραίτητο | Κώδικας 7.5.6 |
+| cmplz_consented_services | Complianz | Επιλογή ανά υπηρεσία | 365 ημ. | Απαραίτητο | Κώδικας 7.5.6 |
+| cmplz_policy_id | Complianz | Έκδοση πολιτικής που αποδέχθηκε ο επισκέπτης | 365 ημ. | Απαραίτητο | Κώδικας 7.5.6 |
+| (sessionStorage) cmplz_id, cmplz_user_data, cmplz_cookie_data | Complianz | Τεχνικά στοιχεία συνεδρίας | Συνεδρία | Απαραίτητο | Κώδικας 7.5.6 |
+| NID, AEC, SOCS, __Secure-* | Google | Χάρτης | έως 13 μήνες | Υπηρεσίες τρίτων (συναίνεση μέσω Complianz) | Ενδεικτικά — ορίζονται από τη Google |
 
-**Καταργήθηκαν (2026-10-14):** `pll_language` (Polylang, mu-plugin), `_GRECAPTCHA` (reCAPTCHA αφαιρέθηκε). AddToAny απενεργοποιημένο.
+**Καταργήθηκαν (2026-10-14):** `pll_language` (Polylang, mu-plugin), `_GRECAPTCHA` (reCAPTCHA αφαιρέθηκε), `comment_author_*` (σχόλια απενεργοποιημένα). AddToAny απενεργοποιημένο. Τα `cmplz_saved_categories`, `cmplz_saved_services`, `cmplz_id` ορίζονται μόνο με records of consent, που είναι απενεργοποιημένο.
+
+Σημείωση: η διάρκεια 365 ημερών είναι η προεπιλογή της ρύθμισης «Consent banner expiration in days» του Complianz.
 
 ## Μη επιβεβαιωμένα (πίσω από το maintenance)
 

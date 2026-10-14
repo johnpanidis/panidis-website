@@ -56,6 +56,7 @@
 | AddToAny Share Buttons | 1.8.18 | inactive (απενεργοποιήθηκε 2026-10-14, GDPR) |
 | Akismet Anti-spam | 5.7.2 | inactive |
 | Blog2Social | 9.1.5 | active |
+| Complianz – GDPR/CCPA Cookie Consent | 7.5.6 | active (banner συναίνεσης: ΕΕ, opt-in· κατηγορίες «Απαραίτητα» / «Υπηρεσίες τρίτων»· μπλοκάρει τον χάρτη Google μέχρι τη συναίνεση· χωρίς scan, cookiedatabase sync, records of consent, data request forms) |
 | Fluent Forms | 6.2.15 | active (Honeypot ενεργό, Disable IP Logging ενεργό, χωρίς reCAPTCHA, μηνύματα στα ελληνικά) |
 | FluentSMTP | 2.4.1 | active (αποστολή φορμών μέσω info@panidis.eu, δοκιμή ΟΚ 2026-10-14) |
 | Kadence Blocks | 3.8.0 | active |
