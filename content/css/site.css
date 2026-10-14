@@ -184,6 +184,12 @@
 #primary-menu .menu-item-83 > a .dropdown-nav-toggle svg,
 #primary-menu .menu-item-98 > a .dropdown-nav-toggle svg { transform: rotate(180deg); }
 
+/* Footer: διαχωριστική γραμμή πάνω από το copyright */
+.site-bottom-footer-wrap .site-footer-row-container-inner {
+  border-top: 1px solid #CBD5E1;
+  padding-top: 20px;
+}
+
 
 /* ---------- 0. Γραμματοσειρές & εικονίδια: τα @import βρίσκονται στην αρχή του αρχείου ---------- */
 
